@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: baseline;
+}
+
+.vertical-bar {
+  background-color: teal;
+  padding: 2px;
+  margin: 2px;
+  flex-basis: 100%;
+}
