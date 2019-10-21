@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createBubbleSortAnimationFrames } from "../algorithms/bubbleSort";
 import ArrayLengthSlider from "../arrayLengthSlider/arrayLengthSlider";
+import { Button } from "semantic-ui-react";
 import "./sortingVisualizer.css";
 
 const MIN = 10;
@@ -42,8 +43,8 @@ const SortingVisualizer = () => {
           ></div>
         ))}
       </div>
-      <button onClick={createNewRandomArray}>New Array</button>
-      <button onClick={handleBubbleSortAnimation}>Bubble Sort</button>
+      <Button onClick={createNewRandomArray}>New Array</Button>
+      <Button onClick={handleBubbleSortAnimation}>Bubble Sort</Button>
       <ArrayLengthSlider
         arrayLength={arrayLength}
         setArrayLength={setArrayLength}

@@ -3,6 +3,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: baseline;
+  margin-top: 10vh;
 }
 
 .vertical-bar {
