@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createBubbleSortAnimationFrames } from "../algorithms/bubbleSort";
+import ArrayLengthSlider from "../arrayLengthSlider/arrayLengthSlider";
 import "./sortingVisualizer.css";
 
 const MIN = 10;
@@ -7,13 +8,13 @@ const MAX = 300;
 
 const SortingVisualizer = () => {
   const [randomArray, setRandomArray] = useState([]);
-  const [unsortedArrayLength, setUnsortedArrayLength] = useState(30);
-
+  const [arrayLength, setArrayLength] = useState({ x: 30 });
+  console.log(randomArray, arrayLength);
   useEffect(() => {
-    let initialRandomArray = generateRandomArrayOfLength(unsortedArrayLength);
+    let initialRandomArray = generateRandomArrayOfLength(arrayLength.x);
     setRandomArray(initialRandomArray);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [setRandomArray]);
+  }, [setRandomArray, arrayLength]);
 
   const handleBubbleSortAnimation = () => {
     const animationFrames = createBubbleSortAnimationFrames(
@@ -26,9 +27,9 @@ const SortingVisualizer = () => {
       }, 500 + 10 * frame);
     }
   };
-
-  const handleArrayLengthChange = e => {
-    setUnsortedArrayLength(unsortedArrayLength);
+  const createNewRandomArray = () => {
+    let initialRandomArray = generateRandomArrayOfLength(arrayLength.x);
+    setRandomArray(initialRandomArray);
   };
   return (
     <div>
@@ -41,14 +42,11 @@ const SortingVisualizer = () => {
           ></div>
         ))}
       </div>
+      <button onClick={createNewRandomArray}>New Array</button>
       <button onClick={handleBubbleSortAnimation}>Bubble Sort</button>
-      <input
-        type="range"
-        min="30"
-        max="1000"
-        step="10"
-        value={unsortedArrayLength}
-        onChange={handleArrayLengthChange}
+      <ArrayLengthSlider
+        arrayLength={arrayLength}
+        setArrayLength={setArrayLength}
       />
     </div>
   );
