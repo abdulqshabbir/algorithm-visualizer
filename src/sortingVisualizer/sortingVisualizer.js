@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { createBubbleSortAnimationFrames } from "../algorithms/bubbleSort";
+import createInsertionSortAnimationFrames from "../algorithms/insertionSort";
 import ArrayLengthSlider from "../arrayLengthSlider/arrayLengthSlider";
 import { Button } from "semantic-ui-react";
 import "./sortingVisualizer.css";
@@ -18,10 +19,16 @@ const SortingVisualizer = () => {
   }, [setRandomArray, arrayLength]);
 
   const handleBubbleSortAnimation = () => {
-    const animationFrames = createBubbleSortAnimationFrames(
-      randomArray,
-      setRandomArray
-    );
+    const animationFrames = createBubbleSortAnimationFrames(randomArray);
+    for (let frame = 0; frame < animationFrames.length; frame++) {
+      setTimeout(() => {
+        setRandomArray(animationFrames[frame]);
+      }, 500 + 10 * frame);
+    }
+  };
+
+  const handleInsertionSortAnimation = () => {
+    const animationFrames = createInsertionSortAnimationFrames(randomArray);
     for (let frame = 0; frame < animationFrames.length; frame++) {
       setTimeout(() => {
         setRandomArray(animationFrames[frame]);
@@ -45,6 +52,7 @@ const SortingVisualizer = () => {
       </div>
       <Button onClick={createNewRandomArray}>New Array</Button>
       <Button onClick={handleBubbleSortAnimation}>Bubble Sort</Button>
+      <Button onClick={handleInsertionSortAnimation}>InsertionSort</Button>
       <ArrayLengthSlider
         arrayLength={arrayLength}
         setArrayLength={setArrayLength}

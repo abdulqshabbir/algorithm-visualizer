@@ -1,7 +1,4 @@
-export function createBubbleSortAnimationFrames(
-  unsortedArray,
-  setUnsortedArray
-) {
+export function createBubbleSortAnimationFrames(unsortedArray) {
   let arrayToSort = unsortedArray.slice();
   let arrayAnimationFrames = [];
   let currentAnimationFrame = [];
@@ -19,29 +16,6 @@ export function createBubbleSortAnimationFrames(
     }
   }
   return arrayAnimationFrames;
-}
-
-export function bubbleSort(array) {
-  /*
-    initialize didSwap to true
-    While didSwap is true,
-      Iterate through the array and swap elements if they are out-of-order:
-        set didSwap to false
-        If array[i] > array[i + 1]  => swap two elements in position i and i + 1
-                                    => set didSwap to true
-  */
-  let didSwap = true;
-  const arrayToSort = array.slice();
-  while (didSwap) {
-    didSwap = false;
-    for (let i = 0; i < arrayToSort.length - 1; i++) {
-      if (arrayToSort[i] > arrayToSort[i + 1]) {
-        swapTwoArrayElements(arrayToSort, i, i + 1);
-        didSwap = true;
-      }
-    }
-  }
-  return arrayToSort;
 }
 
 function swapTwoArrayElements(array, i, j) {

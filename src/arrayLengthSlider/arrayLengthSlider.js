@@ -13,7 +13,7 @@ const ArrayLengthSlider = ({ arrayLength, setArrayLength }) => (
         axis="x"
         xmin={20}
         xmax={70}
-        xstep={10}
+        xstep={1}
         x={arrayLength.x}
         onChange={({ x }) => setArrayLength({ x })}
       />
