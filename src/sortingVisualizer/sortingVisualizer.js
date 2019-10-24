@@ -28,12 +28,9 @@ const SortingVisualizer = () => {
   };
 
   const handleInsertionSortAnimation = () => {
-    const animationFrames = createInsertionSortAnimationFrames(randomArray);
-    for (let frame = 0; frame < animationFrames.length; frame++) {
-      setTimeout(() => {
-        setRandomArray(animationFrames[frame]);
-      }, 500 + 10 * frame);
-    }
+    const sortedArray = createInsertionSortAnimationFrames(randomArray);
+    console.log("unsorted array", randomArray);
+    console.log("sorted array", sortedArray);
   };
   const createNewRandomArray = () => {
     let initialRandomArray = generateRandomArrayOfLength(arrayLength.x);
