@@ -32,7 +32,7 @@ const SortingVisualizer = () => {
     for (let frame = 0; frame < animationFrames.length; frame++) {
       setTimeout(() => {
         setRandomArray(animationFrames[frame]);
-      }, 2000 * frame);
+      }, 50 * frame);
     }
   };
   const createNewRandomArray = () => {
