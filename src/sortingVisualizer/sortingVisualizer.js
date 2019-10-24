@@ -11,7 +11,6 @@ const MAX = 300;
 const SortingVisualizer = () => {
   const [randomArray, setRandomArray] = useState([]);
   const [arrayLength, setArrayLength] = useState({ x: 30 });
-  console.log(randomArray, arrayLength);
   useEffect(() => {
     let initialRandomArray = generateRandomArrayOfLength(arrayLength.x);
     setRandomArray(initialRandomArray);
@@ -28,9 +27,13 @@ const SortingVisualizer = () => {
   };
 
   const handleInsertionSortAnimation = () => {
-    const sortedArray = createInsertionSortAnimationFrames(randomArray);
-    console.log("unsorted array", randomArray);
-    console.log("sorted array", sortedArray);
+    const animationFrames = createInsertionSortAnimationFrames(randomArray);
+    console.log("animation frames", animationFrames);
+    for (let frame = 0; frame < animationFrames.length; frame++) {
+      setTimeout(() => {
+        setRandomArray(animationFrames[frame]);
+      }, 2000 * frame);
+    }
   };
   const createNewRandomArray = () => {
     let initialRandomArray = generateRandomArrayOfLength(arrayLength.x);

@@ -15,6 +15,8 @@ const createInsertionSortAnimationFrames = array => {
 
     */
   const arrayToSort = array.slice();
+  const animationFrames = [];
+  let currentAnimationFrame = [];
   for (let i = 1; i < arrayToSort.length; i++) {
     let valueToInsert = arrayToSort[i];
     let hole = i;
@@ -25,8 +27,12 @@ const createInsertionSortAnimationFrames = array => {
       hole--;
     }
     arrayToSort[hole] = valueToInsert;
+
+    // handle animations
+    currentAnimationFrame = arrayToSort.slice();
+    animationFrames.push(currentAnimationFrame);
   }
-  return arrayToSort;
+  return animationFrames;
 };
 
 export default createInsertionSortAnimationFrames;

@@ -11,7 +11,7 @@ const ArrayLengthSlider = ({ arrayLength, setArrayLength }) => (
       <p>Current length chosen: {arrayLength.x}</p>
       <Slider
         axis="x"
-        xmin={20}
+        xmin={5}
         xmax={70}
         xstep={1}
         x={arrayLength.x}
