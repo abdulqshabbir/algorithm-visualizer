@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createBubbleSortAnimationFrames } from "../algorithms/bubbleSort";
 import createInsertionSortAnimationFrames from "../algorithms/insertionSort";
+import selectionSort from "../algorithms/selectionSort";
 import ArrayLengthSlider from "../arrayLengthSlider/arrayLengthSlider";
 import { Button } from "semantic-ui-react";
 import "./sortingVisualizer.css";
@@ -39,6 +40,12 @@ const SortingVisualizer = () => {
     let initialRandomArray = generateRandomArrayOfLength(arrayLength.x);
     setRandomArray(initialRandomArray);
   };
+
+  const randArray = [2, 5, 3, 10, 22, 3, 1, 30];
+  const sortedArray = selectionSort(randArray);
+
+  console.log(sortedArray);
+
   return (
     <div>
       <div className="container">
