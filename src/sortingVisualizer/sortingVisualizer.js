@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createBubbleSortAnimationFrames } from "../algorithms/bubbleSort";
 import createInsertionSortAnimationFrames from "../algorithms/insertionSort";
-import selectionSort from "../algorithms/selectionSort";
+import createSelectionSortAnimationFrames from "../algorithms/selectionSort";
 import ArrayLengthSlider from "../arrayLengthSlider/arrayLengthSlider";
 import { Button } from "semantic-ui-react";
 import "./sortingVisualizer.css";
@@ -29,11 +29,19 @@ const SortingVisualizer = () => {
 
   const handleInsertionSortAnimation = () => {
     const animationFrames = createInsertionSortAnimationFrames(randomArray);
-    console.log("animation frames", animationFrames);
     for (let frame = 0; frame < animationFrames.length; frame++) {
       setTimeout(() => {
         setRandomArray(animationFrames[frame]);
       }, 50 * frame);
+    }
+  };
+
+  const handleSelectionSortAnimation = () => {
+    const animationFrames = createSelectionSortAnimationFrames(randomArray);
+    for (let frame = 0; frame < animationFrames.length; frame++) {
+      setTimeout(() => {
+        setRandomArray(animationFrames[frame]);
+      }, 30 * frame);
     }
   };
   const createNewRandomArray = () => {
@@ -41,10 +49,7 @@ const SortingVisualizer = () => {
     setRandomArray(initialRandomArray);
   };
 
-  const randArray = [2, 5, 3, 10, 22, 3, 1, 30];
-  const sortedArray = selectionSort(randArray);
-
-  console.log(sortedArray);
+  console.log(createSelectionSortAnimationFrames([2, 3, 1, 5, 24]));
 
   return (
     <div>
@@ -59,7 +64,8 @@ const SortingVisualizer = () => {
       </div>
       <Button onClick={createNewRandomArray}>New Array</Button>
       <Button onClick={handleBubbleSortAnimation}>Bubble Sort</Button>
-      <Button onClick={handleInsertionSortAnimation}>InsertionSort</Button>
+      <Button onClick={handleInsertionSortAnimation}>Insertion Sort</Button>
+      <Button onClick={handleSelectionSortAnimation}>Selection Sort</Button>
       <ArrayLengthSlider
         arrayLength={arrayLength}
         setArrayLength={setArrayLength}

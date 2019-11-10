@@ -1,13 +1,16 @@
-const selectionSort = array => {
+const createSelectionSortAnimationFrames = arrayToSort => {
   /*
         input: array to sort of length n
         output: sorted array
     */
+  const array = arrayToSort.slice();
+  const initialArray = array.slice();
+  const animationFrames = [initialArray];
+
   for (let i = 0; i < array.length - 1; i++) {
     // let i represent the start of the unsorted half of the array
     let minIndex = i;
     let min = array[i];
-
     //let j represent the index that will search for a minimum value in the
     //unsorted half for a given pass
     for (let j = i + 1; j < array.length; j++) {
@@ -20,8 +23,11 @@ const selectionSort = array => {
     let temp = array[i];
     array[i] = min;
     array[minIndex] = temp;
+
+    let arrayAfterSwap = array.slice();
+    animationFrames.push(arrayAfterSwap);
   }
-  return array;
+  return animationFrames;
 };
 
-export default selectionSort;
+export default createSelectionSortAnimationFrames;
