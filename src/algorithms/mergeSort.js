@@ -1,47 +1,56 @@
-const mergeSort = arrayToSort => {
-  /*
-      Breaking logic:
-        n <- length(arrayToSort)
-        midIndex <- Math.floor(n-1/2) 
+function merge(listA, listB) {
+  // merge will take in two sorted sublists (listA/listB) and merge them - in sorted order - into a parent list (mergedList)
+  const mergedList = [];
 
-        // let i represent the starting index of the 'left subarray'
-        // Let LArray be the left array
-        for i <- 0 to midIndex:
-          LArray[i] <- arrayToSort[i]
-        for i <- midIndex + 1 to n - 1
-          RArray[i - (midIndex + 1)] <- arrayToSort[i]
-      
-      Merge function: Trigger function only if less than 2 elements in array
-        (LArray, RArray) -> MergedSortedArray
+  // i is the index of the smallest unpicked element in listA
+  // j is the index of the smallest unpicked element in listB
+  var i = 0;
+  var j = 0;
 
-        merge(LArray, RArray) {
-          const mergedArray = []
-          0 <- i
-          0 <- j
+  while (i < listA.length && j < listB.length) {
+    if (listA[i] <= listB[j]) {
+      mergedList.push(listA[i]);
+      i++;
+    } else {
+      mergedList.push(listB[j]);
+      j++;
+    }
+  }
 
-          while (i < length(LArray) and j < length(RArray)) {
-            if (LArray[i] <= RArray[j]) {
-              mergedArray.push(LArray[i])
-              i++
-            }
-            else {
-              mergedArray.push(RArray[j])
-              j++
-            }
-          }
+  while (j < listB.length) {
+    // while there are still unpicked elements in listB to be added...
+    mergedList.push(listB[j]);
+    j++;
+  }
 
-          if (j < length(RArray)) {
-            for k <- j to RArray.length - 1
-              mergedArray.push(RArray[i])
-          }
-          if (i < length(LArray)) {
-            for k <- i to LArray.length - 1
-              mergedArray.push(LArray[i])
-          }
+  while (i < listA.length) {
+    // while there are still unpicked elements in listA to be added...
+    mergedList.push(listA[i]);
+    i++;
+  }
+  return mergedList;
+}
 
-          return mergedArray
-        }
-    */
-};
+function mergeSort(list) {
+  // Let list represent the original array to be sorted
 
-export default mergeSort;
+  // Base case: a list with 0-1 elements is already sorted
+  if (list.length < 2) {
+    return list;
+  } else {
+    let middle = Math.floor(list.length / 2);
+
+    // Make call to merge with two halves and keep recursively calling mergeSort until list is subdivided into < 2 elements
+    return merge(
+      mergeSort(list.slice(0, middle)),
+      mergeSort(list.slice(middle, list.lenght))
+    );
+  }
+}
+
+const sortedList = console.log(
+  "sorted list: ",
+  mergeSort([2, 34, 345, 45, 2, 3, 4, 45, 6, 45, 3, 3])
+);
+
+export default sortedList;
