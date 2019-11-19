@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { createBubbleSortAnimationFrames } from "../algorithms/bubbleSort";
+import createBubbleSortAnimationFrames from "../algorithms/bubbleSort";
 import createInsertionSortAnimationFrames from "../algorithms/insertionSort";
 import createSelectionSortAnimationFrames from "../algorithms/selectionSort";
 import mergeSort from "../algorithms/mergeSort";
@@ -16,7 +16,6 @@ const SortingVisualizer = () => {
   useEffect(() => {
     let initialRandomArray = generateRandomArrayOfLength(arrayLength.x);
     setRandomArray(initialRandomArray);
-    const run = mergeSort;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setRandomArray, arrayLength]);
 

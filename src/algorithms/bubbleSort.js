@@ -18,6 +18,8 @@ export function createBubbleSortAnimationFrames(unsortedArray) {
   return arrayAnimationFrames;
 }
 
+export default createBubbleSortAnimationFrames;
+
 function swapTwoArrayElements(array, i, j) {
   // a and b are the indices of an array whose elements need to be swapped
   if (array[j] === undefined || array[i] === undefined) {
