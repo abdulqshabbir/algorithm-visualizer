@@ -32,14 +32,11 @@ function merge(listA, listB) {
 }
 
 function mergeSort(list) {
-  // Let list represent the original array to be sorted
-
   // Base case: a list with 0-1 elements is already sorted
   if (list.length < 2) {
     return list;
   } else {
     let middle = Math.floor(list.length / 2);
-
     // Make call to merge with two halves and keep recursively calling mergeSort until list is subdivided into < 2 elements
     return merge(
       mergeSort(list.slice(0, middle)),
